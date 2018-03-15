@@ -47,6 +47,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./frontend.key -out 
 protoc -I proto/ proto/helloworld.proto --go_out=plugins=grpc:proto/
 
 #Build client & server
+go get ./service/ ./client/
 go build -o gsvc -tags netgo service/service.go
 go build -o gcli -tags netgo client/client.go
 ./gsvc # & ./gcli
